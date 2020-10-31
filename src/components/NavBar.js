@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import LoginDialog from "./login/LoginDialog";
 
 // JSS
 // Write CSS in JS
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar() {
     const classes = useStyles();
-
+    const [open, setOpen] = useState(false);
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -32,11 +33,15 @@ export default function NavBar() {
           </Typography>
                     <Button color="inherit" component={Link} to="/">All Courses</Button>
                     <Button color="inherit" component={Link} to="/enrolled-courses">Enrolled Courses</Button>
+                    <Button color="inherit" onClick={handleLoginClick}>Login</Button>
                     {/*<<Link to="/">All Courses</Link>
           <Link to="/enrolled-courses">Enrolled Courses</Link>*/}
-                    <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
+            <LoginDialog open={open} handleDialogClose={()=> setOpen(false)}/>
         </div>
     );
+    function handleLoginClick() {
+        setOpen(true);
+    }
 }

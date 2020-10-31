@@ -1,10 +1,17 @@
 import axios from '../axios';
 export const CourseService = {
-    getAllCourses: function() {
-        return axios.get('/courses');
+    getAllCourses: function(token) {
+        return axios.get('/api/course', {
+            headers: {
+                Authorization: `Bearer ${token} `
+            }
+        });
     },
-    // TODO: change to actual APT whne backend is ready
-    getEnrolledCourses: function() {
-        return axios.get('/courses');
-    }
+    getEnrolledCourses: function(token) {
+        return axios.get('/api/course/enrollment', {
+            headers: {
+                Authorization: `Bearer ${token} `
+            }
+        });
+    },
 };

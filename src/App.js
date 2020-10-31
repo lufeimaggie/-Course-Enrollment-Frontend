@@ -8,6 +8,7 @@ import {
 import NavBar from './components/NavBar';
 import AllCourses from './views/AllCourses';
 import EnrolledCourses from './views/EnrolledCourses';
+import LoginDialog from "./components/login/LoginDialog";
 export default function App() {
   return (
     <Router>
@@ -19,6 +20,9 @@ export default function App() {
         <Switch>
           <Route path="/enrolled-courses">
             <EnrolledCourses />
+          </Route>
+          <Route path="/debug">
+            <LoginDialog/>
           </Route>
           <Route path="/">
             <AllCourses />
